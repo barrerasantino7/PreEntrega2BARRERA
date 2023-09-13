@@ -3,9 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+    <header class="encabezado">
+        <h1>PreEntrega2BARRERA</h1>
+    </header>
+    <main>
+
+        <section class="conversor">
+            <h2 class="conversor-titulo">Conversor de monedas</h2>
+            <div class="conversor_selectores">
+                <form action="#" class="selectores_form">
+                    <label for="moneda">Selecciona una moneda:</label>
+                    <select name="monedas" id="moneda">
+                        <option value="Selecciona una moneda">Opciones</option>
+                        <option value="peso-Arg">Peso Argentino</option>
+                        <option value="dolar-bl">Dolar Blue</option>
+                        <option value="dolar-of">Dolar oficial</option>
+                        <option value="euro">Euro</option>
+                        <option value="real-Br">Real</option>
+                        <option value="yuan">Yuan</option>
+                        <option value="peso-Mex">Peso Mexicano</option>
+                        <option value="peso-Uru">Peso Uruguayo</option>
+                    </select>
+                </form>
+
+                <form action="#" class="selectores_form">
+                    <label for="moneda-2">Selecciona otra moneda:</label>
+                    <select name="monedas" id="moneda-2">
+                        <option value="Selecciona una moneda">Opciones</option>
+                        <option value="peso-Arg">Peso Argentino</option>
+                        <option value="dolar-bl">Dolar Blue</option>
+                        <option value="dolar-of">Dolar oficial</option>
+                        <option value="euro">Euro</option>
+                        <option value="real-Br">Real</option>
+                        <option value="yuan">Yuan</option>
+                        <option value="peso-Mex">Peso Mexicano</option>
+                        <option value="peso-Uru">Peso Uruguayo</option>
+                    </select>
+                </form>
+            </div>
+
+            <form action="" class="conversor_cantidad">
+                <div>
+                    <label for="cantidad">¿Cuántos <span>-<!--Nombre de la moneda que eligió-->-</span> deseas convertir a <span>-<!--Moneda que eligió-->-</span>?</label>
+                    <input id="cantidad" type="number">
+                </div>
+
+                <input type="submit" value="Convertir" class="cantidad-boton">
+
+            </form>
+
+            <span class="conversor_resultado">Resultado<!--resultado--></span>
+
+        </section>
+
+        <hr>
+
+        <section>
+            <h3>Historial de conversiones:</h3>
+        </section>
+
+    </main>
     
 </body>
 </html>
