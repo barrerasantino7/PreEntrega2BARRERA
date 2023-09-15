@@ -1,52 +1,76 @@
 //Monedas disponibles.
-const dolar = 740;
-const euro = 379.51;
-const pesoMex = 20.90;
-const pesoUru = 9.31;
-const yuan = 48.22;
-const realBr = 71.12;
+const dolarBl = {
+    nombre: "dolar blue",
+    precio: 740,
+    lugar: "Estados Unidos",
+    alias:"dolares",
+}
+const dolarOf = {
+    nombre: "dolar oficial",
+    precio: 350,
+    lugar: "Estados Unidos",
+    alias:"dolares",
+}
+const euro = {
+    nombre: "euro",
+    precio: 379.51,
+    lugar: "la Unión Europea",
+    alias:"euros",
+}
+const pesoMex = {
+    nombre: "peso mexicano",
+    precio: 20.90,
+    lugar: "México",
+    alias:"pesos Mexicanos",
+}
+const pesoUru = {
+    nombre: "peso uruguayo",
+    precio: 9.31,
+    lugar: "Uruguay",
+    alias:"pesos Uruguayos",
+}
+const yuan = {
+    nombre: "yuan",
+    precio: 48.22,
+    lugar: "China",
+    alias:"yuanes",
+}
+const realBr = {
+    nombre: "real",
+    precio: 71.12,
+    lugar: "Brasil",
+    alias:"reales",
+}
 
-//Variables que establecerá el usuario.
-let pesoArg
-let moneda
+const monedas = [dolarBl, dolarOf, euro, pesoMex, pesoUru, yuan, realBr]
 
-//Función para convertir las monedas a pesos argentinos.
+const validacionNombre = monedas.map((el)=> el.nombre)
+
 const convertir = (a,b) => a / b;
 
-let ok = 15 //Variable para determinar cuando terminará el ciclo.
+let pesosArg
+let monedaElegida
 
-do{//Ciclo, se repetirá las veces que el usuario escriba mal una palabra y terminará cuando el el calculo de la moneda sea correcto.
 
-moneda = prompt("Elija una de las monedas que quieras convertir a Pesos Argentinos: dolar, euro, peso mexicano, peso uruguayo, yuan, real.")
-pesoArg = prompt("Ingresa la cantidad de pesos argentinos que tengas y quieras convertir.")
+let validacionCiclo = 15 
+do{
+    monedaElegida= prompt("Elija una de las monedas que quieras convertir a Pesos Argentinos: dolar blue, dolar oficial, euro, peso mexicano, peso uruguayo, yuan, real.")
 
-if (moneda == "dolar"){
-alert("Tienes " + convertir(pesoArg, dolar) + " dolares");
-ok = 15
+    let validacionCondicional = validacionNombre.includes(monedaElegida)
 
-}else if (moneda == "euro"){
-    alert("Tienes " + convertir(pesoArg, euro) + " euros");
-    ok = 15
+    if(true == validacionCondicional){
 
-}else if (moneda == "peso mexicano"){
-    alert ("Tienes " + convertir(pesoArg, pesoMex) + " pesos mexicanos"); 
-    ok = 15
+        pesosArg= prompt("Ingresa la cantidad de pesos argentinos que tengas y quieras convertir.")
 
-}else if (moneda == "peso uruguayo"){
-    alert("Tienes " + convertir(pesoArg, pesoUru) + " pesos uruguayos");
-    ok = 15
-
-}else if (moneda == "yuan"){
-    alert("Tienes " + convertir(pesoArg, yuan) + " yuanes"); 
-    ok = 15
-
-}else if (moneda == "real"){
-    alert("Tienes " + convertir(pesoArg, realBr) + " reales"); 
-    ok = 15
-
-} else{
-    alert("¡Alguno de los datos ingresados no es correcto!") //Este alert sirve para avisar al usuario que escribió con alguna falta de ortografia el nombre de la moneda.
-    ok = 10
+        const identificar = monedas.find((el)=> el.nombre == monedaElegida)
     
-}
-}while(ok == 10)// Condicional que mantiene el ciclo.
+        alert("Tienes $" + convertir(pesosArg, identificar.precio)+ " " + identificar.alias+ ". Esta moneda es de " + identificar.lugar + ".")
+
+
+    }else{
+
+        alert("¡Alguno de los datos ingresados no es correcto! Procura escribir sin faltas de ortografía el nombre de la moneda, tienes que reiniciar la página.")
+        validacionCiclo=10;
+
+    }
+}while(validacionCiclo == 15)
