@@ -1,4 +1,4 @@
-//Monedas disponibles.
+//Monedas disponibles hechas objetos.
 const dolarBl = {
     nombre: "dolar blue",
     precio: 740,
@@ -41,35 +41,50 @@ const realBr = {
     lugar: "Brasil",
     alias:"reales",
 }
-
+// Array de todas las monedas.
 const monedas = [dolarBl, dolarOf, euro, pesoMex, pesoUru, yuan, realBr]
 
+// Uso el método map para crear un array nuevo solo con los nombres de las monedas para luego utilizarlo en un condicional.
 const validacionNombre = monedas.map((el)=> el.nombre)
 
+// Función para hacer la conversion.
 const convertir = (a,b) => a / b;
 
 let pesosArg
 let monedaElegida
 
-
+// Variable con dato numerico para poder "cortar" con el ciclo.
 let validacionCiclo = 15 
-do{
-    monedaElegida= prompt("Elija una de las monedas que quieras convertir a Pesos Argentinos: dolar blue, dolar oficial, euro, peso mexicano, peso uruguayo, yuan, real.")
 
+do{
+    monedaElegida= prompt("Elija una de las monedas que quieras convertir a Pesos Argentinos: dolar blue, dolar oficial, euro, peso mexicano, peso uruguayo, yuan, real. Escribe 'salir' en caso de que no quieras seguir con la conversion. ")
+
+    // Uso el metodo includes para validar que el nombre de la moneda ingresada por el usuario corresponde al nombre de una de las monedas ya establecidas en el array "validacionNombre". Creando asi una variable con un dato booleando el cual utilizaré para un condicional.
     let validacionCondicional = validacionNombre.includes(monedaElegida)
 
-    if(true == validacionCondicional){
+    // Condicional que permite salir del ciclo.
+    if(monedaElegida == "salir"){
+        alert("Haz decidido salir.")
+        validacionCiclo = 10
+    }
+    else if(true == validacionCondicional){
 
         pesosArg= prompt("Ingresa la cantidad de pesos argentinos que tengas y quieras convertir.")
 
+        // Uso el metodo find para encontrar el objeto cuyo nombre se compare al nombre ingresado por el usuario.
         const identificar = monedas.find((el)=> el.nombre == monedaElegida)
     
-        alert("Tienes $" + convertir(pesosArg, identificar.precio)+ " " + identificar.alias+ ". Esta moneda es de " + identificar.lugar + ".")
+        conversion = "Tienes $" + convertir(pesosArg, identificar.precio)+ " " + identificar.alias+ ". Esta moneda es de " + identificar.lugar + ".";
+
+        alert(conversion);
+        // Este console.log simula ser el historial.
+        console.log(conversion);
+
 
 
     }else{
 
-        alert("¡Alguno de los datos ingresados no es correcto! Procura escribir sin faltas de ortografía el nombre de la moneda, tienes que reiniciar la página.")
+        alert("¡Alguno de los datos ingresados no es correcto! Procura escribir sin faltas de ortografía el nombre de la moneda, tendrás que reiniciar la página.")
         validacionCiclo=10;
 
     }
