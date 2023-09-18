@@ -47,8 +47,8 @@ const monedas = [dolarBl, dolarOf, euro, pesoMex, pesoUru, yuan, realBr]
 // Uso el método map para crear un array nuevo solo con los nombres de las monedas para luego utilizarlo en un condicional.
 const validacionNombre = monedas.map((el)=> el.nombre)
 
-// Función para hacer la conversion.
-const convertir = (a,b) => a / b;
+// Función para hacer la conversion. El toFixed me ayuda a redondear un poco el resultado (dejando dos decimales).
+const convertir = (a,b) => (a / b).toFixed(2);
 
 let pesosArg
 let monedaElegida
@@ -77,6 +77,7 @@ do{
         conversion = "Tienes $" + convertir(pesosArg, identificar.precio)+ " " + identificar.alias+ ". Esta moneda es de " + identificar.lugar + ".";
 
         alert(conversion);
+        
         // Este console.log simula ser el historial.
         console.log(conversion);
 
